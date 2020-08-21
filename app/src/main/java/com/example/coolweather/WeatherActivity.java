@@ -24,6 +24,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bumptech.glide.Glide;
 import com.example.coolweather.gson.Forecast;
 import com.example.coolweather.gson.Weather;
+import com.example.coolweather.service.AutoUpdateService;
 import com.example.coolweather.util.HttpUtil;
 import com.example.coolweather.util.Utility;
 
@@ -225,6 +226,9 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
         wash_text.setText(carWash);
         sport_text.setText(sport);
         weather_layout.setVisibility(View.VISIBLE);
+        /*启动后台更新服务*/
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
     @Override
